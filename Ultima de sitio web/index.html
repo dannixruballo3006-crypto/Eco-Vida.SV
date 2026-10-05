@@ -1,0 +1,2587 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="EcoSV — Plataforma educativa sobre las causas y consecuencias de la contaminación ambiental y social en El Salvador."
+    >
+
+    <meta name="theme-color" content="#071a15">
+
+    <title>EcoSV | Medio Ambiente y Sostenibilidad</title>
+
+    <!-- Tipografía -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Iconos -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         LOADER
+    ====================================================== -->
+
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <div class="loader-logo">
+                <i class="fa-solid fa-leaf"></i>
+            </div>
+
+            <span>EcoSV</span>
+
+            <div class="loader-line">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- =====================================================
+         APP
+    ====================================================== -->
+
+    <div class="app">
+
+
+        <!-- =================================================
+             SIDEBAR
+        ================================================== -->
+
+        <aside class="sidebar" id="sidebar">
+
+            <div class="sidebar-header">
+
+                <a href="#inicio" class="brand nav-trigger" data-section="inicio">
+                    <span class="brand-icon">
+                        <i class="fa-solid fa-leaf"></i>
+                    </span>
+
+                    <span class="brand-text">
+                        <strong>Eco<span>SV</span></strong>
+                        <small>Medio ambiente</small>
+                    </span>
+                </a>
+
+                <button
+                    class="sidebar-close"
+                    id="sidebarClose"
+                    aria-label="Cerrar menú"
+                >
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+
+            </div>
+
+
+            <div class="sidebar-label">
+                EXPLORAR
+            </div>
+
+
+            <nav class="main-navigation">
+
+                <button
+                    class="nav-item active"
+                    data-section="inicio"
+                >
+                    <i class="fa-solid fa-house"></i>
+                    <span>Inicio</span>
+                </button>
+
+
+                <button
+                    class="nav-item"
+                    data-section="marco-teorico"
+                >
+                    <i class="fa-solid fa-book-open"></i>
+                    <span>Marco teórico</span>
+                </button>
+
+
+                <button
+                    class="nav-item"
+                    data-section="nosotros"
+                >
+                    <i class="fa-solid fa-users"></i>
+                    <span>Sobre nosotros</span>
+                </button>
+
+
+                <button
+                    class="nav-item"
+                    data-section="dashboard"
+                >
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Dashboard</span>
+
+                    <span class="nav-badge">DATA</span>
+                </button>
+
+
+                <button
+                    class="nav-item"
+                    data-section="investigaciones"
+                >
+                    <i class="fa-solid fa-microscope"></i>
+                    <span>Investigaciones</span>
+                </button>
+
+
+                <button
+                    class="nav-item"
+                    data-section="resultados"
+                >
+                    <i class="fa-solid fa-chart-column"></i>
+                    <span>Resultados</span>
+                </button>
+
+
+                <button
+                    class="nav-item"
+                    data-section="propuestas"
+                >
+                    <i class="fa-solid fa-seedling"></i>
+                    <span>Propuestas</span>
+                </button>
+
+
+                <button
+                    class="nav-item"
+                    data-section="delimitaciones"
+                >
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>Delimitaciones</span>
+                </button>
+
+
+                <button
+                    class="nav-item"
+                    data-section="referencias"
+                >
+                    <i class="fa-solid fa-bookmark"></i>
+                    <span>Referencias</span>
+                </button>
+
+            </nav>
+
+
+            <div class="sidebar-bottom">
+
+                <div class="sidebar-card">
+
+                    <div class="sidebar-card-icon">
+                        <i class="fa-solid fa-lightbulb"></i>
+                    </div>
+
+                    <div>
+                        <strong>Tu acción importa</strong>
+
+                        <p>
+                            Los pequeños hábitos pueden generar grandes cambios.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- =================================================
+             OVERLAY MOBILE
+        ================================================== -->
+
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+
+        <!-- =================================================
+             MAIN AREA
+        ================================================== -->
+
+        <div class="main-wrapper">
+
+
+            <!-- =============================================
+                 HEADER
+            ============================================== -->
+
+            <header class="topbar">
+
+                <button
+                    class="mobile-menu"
+                    id="mobileMenu"
+                    aria-label="Abrir menú"
+                >
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+
+                <div class="breadcrumb">
+                    <span>EcoSV</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                    <strong id="breadcrumbCurrent">Inicio</strong>
+                </div>
+
+
+                <div class="topbar-actions">
+
+                    <div class="live-status">
+                        <span class="status-dot"></span>
+                        Plataforma activa
+                    </div>
+
+                    <button
+                        class="theme-button"
+                        id="themeToggle"
+                        aria-label="Cambiar tema"
+                    >
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
+
+                </div>
+
+            </header>
+
+
+            <!-- =============================================
+                 MAIN
+            ============================================== -->
+
+            <main class="main-content">
+
+
+                <!-- =================================================
+                     INICIO
+                ================================================== -->
+
+                <section
+                    class="page-section active"
+                    id="inicio"
+                    data-title="Inicio"
+                >
+
+                    <div class="hero">
+
+                        <div class="hero-content">
+
+                            <div class="eyebrow">
+                                <span></span>
+                                MEDIO AMBIENTE · EL SALVADOR
+                            </div>
+
+
+                            <h1>
+                                El futuro de El Salvador
+                                <span>también depende de nosotros.</span>
+                            </h1>
+
+
+                            <p class="hero-description">
+                                Explora las causas y consecuencias de la contaminación
+                                ambiental y social, conoce sus impactos y descubre
+                                acciones que pueden contribuir a construir un país
+                                más sostenible.
+                            </p>
+
+
+                            <div class="hero-actions">
+
+                                <button
+                                    class="btn btn-primary nav-trigger"
+                                    data-section="investigaciones"
+                                >
+                                    Explorar investigación
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </button>
+
+
+                                <button
+                                    class="btn btn-secondary nav-trigger"
+                                    data-section="dashboard"
+                                >
+                                    <i class="fa-solid fa-chart-simple"></i>
+                                    Ver datos
+                                </button>
+
+                            </div>
+
+
+                            <div class="hero-note">
+                                <i class="fa-solid fa-circle-info"></i>
+                                Proyecto educativo sobre sostenibilidad en El Salvador.
+                            </div>
+
+                        </div>
+
+
+                        <div class="hero-visual">
+
+                            <div class="hero-orbit orbit-one"></div>
+                            <div class="hero-orbit orbit-two"></div>
+
+                            <div class="hero-main-card">
+
+                                <div class="hero-card-top">
+                                    <span>IMPACTO AMBIENTAL</span>
+
+                                    <span class="hero-card-live">
+                                        <i class="fa-solid fa-circle"></i>
+                                        LIVE
+                                    </span>
+                                </div>
+
+
+                                <div class="earth-container">
+
+                                    <div class="earth">
+                                        <div class="earth-glow"></div>
+
+                                        <div class="earth-land land-one"></div>
+                                        <div class="earth-land land-two"></div>
+                                        <div class="earth-land land-three"></div>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="hero-card-bottom">
+
+                                    <div>
+                                        <strong>4</strong>
+                                        <span>áreas principales</span>
+                                    </div>
+
+                                    <div>
+                                        <strong>9</strong>
+                                        <span>módulos de estudio</span>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="floating-card floating-card-one">
+
+                                <div class="floating-icon water">
+                                    <i class="fa-solid fa-droplet"></i>
+                                </div>
+
+                                <div>
+                                    <strong>Agua</strong>
+                                    <span>Recurso esencial</span>
+                                </div>
+
+                            </div>
+
+
+                            <div class="floating-card floating-card-two">
+
+                                <div class="floating-icon forest">
+                                    <i class="fa-solid fa-tree"></i>
+                                </div>
+
+                                <div>
+                                    <strong>Biodiversidad</strong>
+                                    <span>Proteger para conservar</span>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- IMPACT CARDS -->
+
+                    <div class="section-heading">
+
+                        <div>
+                            <span class="section-kicker">PANORAMA</span>
+
+                            <h2>
+                                Un problema que nos involucra a todos
+                            </h2>
+                        </div>
+
+                        <p>
+                            La contaminación ambiental no es únicamente un problema
+                            natural: también puede producir consecuencias sociales,
+                            económicas y de salud pública.
+                        </p>
+
+                    </div>
+
+
+                    <div class="impact-grid">
+
+                        <article class="impact-card">
+
+                            <div class="impact-card-icon">
+                                <i class="fa-solid fa-water"></i>
+                            </div>
+
+                            <div>
+                                <span>01</span>
+                                <h3>Agua</h3>
+
+                                <p>
+                                    La contaminación de cuerpos de agua afecta
+                                    ecosistemas, comunidades y disponibilidad
+                                    de recursos.
+                                </p>
+                            </div>
+
+                            <button
+                                class="mini-arrow nav-trigger"
+                                data-section="marco-teorico"
+                                aria-label="Ver contaminación del agua"
+                            >
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </button>
+
+                        </article>
+
+
+                        <article class="impact-card">
+
+                            <div class="impact-card-icon">
+                                <i class="fa-solid fa-wind"></i>
+                            </div>
+
+                            <div>
+                                <span>02</span>
+                                <h3>Aire</h3>
+
+                                <p>
+                                    Las emisiones y partículas contaminantes
+                                    deterioran la calidad del aire.
+                                </p>
+                            </div>
+
+                            <button
+                                class="mini-arrow nav-trigger"
+                                data-section="marco-teorico"
+                                aria-label="Ver contaminación del aire"
+                            >
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </button>
+
+                        </article>
+
+
+                        <article class="impact-card">
+
+                            <div class="impact-card-icon">
+                                <i class="fa-solid fa-mountain"></i>
+                            </div>
+
+                            <div>
+                                <span>03</span>
+                                <h3>Suelo</h3>
+
+                                <p>
+                                    Los residuos y ciertas actividades productivas
+                                    pueden degradar los ecosistemas terrestres.
+                                </p>
+                            </div>
+
+                            <button
+                                class="mini-arrow nav-trigger"
+                                data-section="marco-teorico"
+                                aria-label="Ver contaminación del suelo"
+                            >
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </button>
+
+                        </article>
+
+
+                        <article class="impact-card">
+
+                            <div class="impact-card-icon">
+                                <i class="fa-solid fa-recycle"></i>
+                            </div>
+
+                            <div>
+                                <span>04</span>
+                                <h3>Residuos</h3>
+
+                                <p>
+                                    La generación y gestión de residuos representa
+                                    un reto ambiental y social.
+                                </p>
+                            </div>
+
+                            <button
+                                class="mini-arrow nav-trigger"
+                                data-section="marco-teorico"
+                                aria-label="Ver residuos"
+                            >
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </button>
+
+                        </article>
+
+                    </div>
+
+
+                    <!-- HOME CTA -->
+
+                    <div class="home-cta">
+
+                        <div>
+
+                            <span class="section-kicker">
+                                CONOCIMIENTO + ACCIÓN
+                            </span>
+
+                            <h2>
+                                Entender el problema es el primer paso.
+                            </h2>
+
+                            <p>
+                                Conoce las causas, revisa los datos y descubre
+                                propuestas que pueden convertirse en acciones
+                                cotidianas.
+                            </p>
+
+                        </div>
+
+                        <button
+                            class="btn btn-primary nav-trigger"
+                            data-section="propuestas"
+                        >
+                            Ver propuestas
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     MARCO TEÓRICO
+                ================================================== -->
+
+                <section
+                    class="page-section"
+                    id="marco-teorico"
+                    data-title="Marco teórico"
+                >
+
+                    <div class="page-header">
+
+                        <div>
+
+                            <span class="section-kicker">
+                                01 · FUNDAMENTOS
+                            </span>
+
+                            <h1>
+                                Marco teórico
+                            </h1>
+
+                            <p>
+                                Comprender los diferentes tipos de contaminación
+                                permite identificar sus causas, consecuencias y
+                                posibles alternativas de solución.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="theory-grid">
+
+                        <article class="theory-card water-card">
+
+                            <div class="theory-number">01</div>
+
+                            <div class="theory-icon">
+                                <i class="fa-solid fa-droplet"></i>
+                            </div>
+
+                            <h2>Contaminación del agua</h2>
+
+                            <p>
+                                Ocurre cuando sustancias o residuos alteran las
+                                características físicas, químicas o biológicas
+                                de ríos, lagos, quebradas y otras fuentes de agua.
+                            </p>
+
+                            <div class="cause-list">
+
+                                <span>
+                                    <i class="fa-solid fa-minus"></i>
+                                    Aguas residuales
+                                </span>
+
+                                <span>
+                                    <i class="fa-solid fa-minus"></i>
+                                    Residuos sólidos
+                                </span>
+
+                                <span>
+                                    <i class="fa-solid fa-minus"></i>
+                                    Actividades productivas
+                                </span>
+
+                            </div>
+
+                            <div class="theory-footer">
+                                <strong>Impacto</strong>
+                                <span>↑ Ecosistemas + salud pública</span>
+                            </div>
+
+                        </article>
+
+
+                        <article class="theory-card air-card">
+
+                            <div class="theory-number">02</div>
+
+                            <div class="theory-icon">
+                                <i class="fa-solid fa-wind"></i>
+                            </div>
+
+                            <h2>Contaminación del aire</h2>
+
+                            <p>
+                                Se produce cuando gases, partículas u otras
+                                sustancias alteran la composición y calidad
+                                del aire que respiramos.
+                            </p>
+
+                            <div class="cause-list">
+
+                                <span>
+                                    <i class="fa-solid fa-minus"></i>
+                                    Emisiones vehiculares
+                                </span>
+
+                                <span>
+                                    <i class="fa-solid fa-minus"></i>
+                                    Quema de residuos
+                                </span>
+
+                                <span>
+                                    <i class="fa-solid fa-minus"></i>
+                                    Actividad industrial
+                                </span>
+
+                            </div>
+
+                            <div class="theory-footer">
+                                <strong>Impacto</strong>
+                                <span>↑ Calidad ambiental</span>
+                            </div>
+
+                        </article>
+
+
+                        <article class="theory-card soil-card">
+
+                            <div class="theory-number">03</div>
+
+                            <div class="theory-icon">
+                                <i class="fa-solid fa-seedling"></i>
+                            </div>
+
+                            <h2>Contaminación del suelo</h2>
+
+                            <p>
+                                Consiste en la incorporación de residuos o
+                                sustancias que pueden modificar las propiedades
+                                del suelo y afectar los ecosistemas.
+                            </p>
+
+                            <div class="cause-list">
+
+                                <span>
+                                    <i class="fa-solid fa-minus"></i>
+                                    Residuos
+                                </span>
+
+                                <span>
+                                    <i class="fa-solid fa-minus"></i>
+                                    Sustancias químicas
+                                </span>
+
+                                <span>
+                                    <i class="fa-solid fa-minus"></i>
+                                    Deforestación
+                                </span>
+
+                            </div>
+
+                            <div class="theory-footer">
+                                <strong>Impacto</strong>
+                                <span>↑ Degradación territorial</span>
+                            </div>
+
+                        </article>
+
+
+                        <article class="theory-card waste-card">
+
+                            <div class="theory-number">04</div>
+
+                            <div class="theory-icon">
+                                <i class="fa-solid fa-recycle"></i>
+                            </div>
+
+                            <h2>Residuos sólidos</h2>
+
+                            <p>
+                                El manejo inadecuado de residuos puede producir
+                                contaminación, afectar paisajes y contribuir
+                                a problemas ambientales y sociales.
+                            </p>
+
+                            <div class="cause-list">
+
+                                <span>
+                                    <i class="fa-solid fa-minus"></i>
+                                    Consumo elevado
+                                </span>
+
+                                <span>
+                                    <i class="fa-solid fa-minus"></i>
+                                    Baja separación
+                                </span>
+
+                                <span>
+                                    <i class="fa-solid fa-minus"></i>
+                                    Disposición incorrecta
+                                </span>
+
+                            </div>
+
+                            <div class="theory-footer">
+                                <strong>Impacto</strong>
+                                <span>↑ Presión sobre ecosistemas</span>
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    <div class="info-banner">
+
+                        <div class="info-banner-icon">
+                            <i class="fa-solid fa-lightbulb"></i>
+                        </div>
+
+                        <div>
+                            <strong>
+                                ¿Por qué importa conocer estos conceptos?
+                            </strong>
+
+                            <p>
+                                Porque reconocer el origen de un problema facilita
+                                analizar sus consecuencias y construir propuestas
+                                de cambio basadas en información.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     NOSOTROS
+                ================================================== -->
+
+                <section
+                    class="page-section"
+                    id="nosotros"
+                    data-title="Sobre nosotros"
+                >
+
+                    <div class="page-header">
+
+                        <div>
+
+                            <span class="section-kicker">
+                                02 · IDENTIDAD
+                            </span>
+
+                            <h1>
+                                Sobre nosotros
+                            </h1>
+
+                            <p>
+                                Un proyecto educativo pensado para acercar la
+                                sostenibilidad a las nuevas generaciones.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="about-layout">
+
+                        <div class="about-main">
+
+                            <div class="about-card">
+
+                                <span class="section-kicker">
+                                    PROPÓSITO
+                                </span>
+
+                                <h2>
+                                    Conectar conocimiento, juventud y acción.
+                                </h2>
+
+                                <p>
+                                    EcoSV nace como una plataforma educativa para
+                                    presentar de manera clara y moderna información
+                                    relacionada con la contaminación ambiental y
+                                    sus efectos en la sociedad salvadoreña.
+                                </p>
+
+                                <p>
+                                    El proyecto busca fomentar una cultura de
+                                    responsabilidad ambiental especialmente entre
+                                    jóvenes, promoviendo pensamiento crítico,
+                                    participación y hábitos sostenibles.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="mission-grid">
+
+                            <article class="mission-card">
+
+                                <div class="mission-icon">
+                                    <i class="fa-solid fa-bullseye"></i>
+                                </div>
+
+                                <h3>Misión</h3>
+
+                                <p>
+                                    Facilitar información ambiental comprensible
+                                    y atractiva para promover conciencia y
+                                    participación juvenil.
+                                </p>
+
+                            </article>
+
+
+                            <article class="mission-card">
+
+                                <div class="mission-icon">
+                                    <i class="fa-solid fa-eye"></i>
+                                </div>
+
+                                <h3>Visión</h3>
+
+                                <p>
+                                    Contribuir a una generación joven informada,
+                                    crítica y comprometida con la sostenibilidad.
+                                </p>
+
+                            </article>
+
+
+                            <article class="mission-card">
+
+                                <div class="mission-icon">
+                                    <i class="fa-solid fa-people-group"></i>
+                                </div>
+
+                                <h3>Juventud</h3>
+
+                                <p>
+                                    Convertir a los jóvenes en participantes
+                                    activos de las soluciones ambientales.
+                                </p>
+
+                            </article>
+
+
+                            <article class="mission-card">
+
+                                <div class="mission-icon">
+                                    <i class="fa-solid fa-earth-americas"></i>
+                                </div>
+
+                                <h3>Propósito</h3>
+
+                                <p>
+                                    Relacionar los problemas ambientales con
+                                    sus consecuencias sociales.
+                                </p>
+
+                            </article>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="team-section">
+
+                        <div class="section-heading">
+
+                            <div>
+                                <span class="section-kicker">
+                                    EQUIPO
+                                </span>
+
+                                <h2>
+                                    Personas detrás del proyecto
+                                </h2>
+                            </div>
+
+                            <p>
+                                Área preparada para incorporar posteriormente
+                                fotografías, nombres y responsabilidades.
+                            </p>
+
+                        </div>
+
+
+                        <div class="team-grid">
+
+                            <article class="team-card">
+
+                                <div class="team-avatar">
+                                    <i class="fa-solid fa-user"></i>
+                                </div>
+
+                                <h3>// Nombre</h3>
+
+                                <span>// Cargo / función</span>
+
+                                <p>
+                                    // Información del integrante.
+                                </p>
+
+                            </article>
+
+
+                            <article class="team-card">
+
+                                <div class="team-avatar">
+                                    <i class="fa-solid fa-user"></i>
+                                </div>
+
+                                <h3>// Nombre</h3>
+
+                                <span>// Cargo / función</span>
+
+                                <p>
+                                    // Información del integrante.
+                                </p>
+
+                            </article>
+
+
+                            <article class="team-card">
+
+                                <div class="team-avatar">
+                                    <i class="fa-solid fa-user"></i>
+                                </div>
+
+                                <h3>// Nombre</h3>
+
+                                <span>// Cargo / función</span>
+
+                                <p>
+                                    // Información del integrante.
+                                </p>
+
+                            </article>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     DASHBOARD
+                ================================================== -->
+
+                <section
+                    class="page-section"
+                    id="dashboard"
+                    data-title="Dashboard"
+                >
+
+                    <div class="page-header dashboard-header">
+
+                        <div>
+
+                            <span class="section-kicker">
+                                03 · DATOS
+                            </span>
+
+                            <h1>
+                                Dashboard ambiental
+                            </h1>
+
+                            <p>
+                                Explora indicadores y visualizaciones de ejemplo
+                                diseñadas para representar el comportamiento de
+                                variables ambientales.
+                            </p>
+
+                        </div>
+
+
+                        <div class="dashboard-controls">
+
+                            <label for="periodFilter">
+                                Periodo
+                            </label>
+
+                            <select id="periodFilter">
+                                <option value="2024">2024</option>
+                                <option value="2023">2023</option>
+                                <option value="2022">2022</option>
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="demo-warning">
+
+                        <i class="fa-solid fa-circle-info"></i>
+
+                        <span>
+                            <strong>Modo demostración:</strong>
+                            los indicadores visualizados son datos de ejemplo
+                            para demostrar el funcionamiento del Dashboard.
+                        </span>
+
+                    </div>
+
+
+                    <!-- KPI -->
+
+                    <div class="kpi-grid">
+
+                        <article class="kpi-card">
+
+                            <div class="kpi-top">
+
+                                <div class="kpi-icon">
+                                    <i class="fa-solid fa-droplet"></i>
+                                </div>
+
+                                <span class="kpi-trend positive">
+                                    <i class="fa-solid fa-arrow-up"></i>
+                                    8.2%
+                                </span>
+
+                            </div>
+
+                            <span class="kpi-label">
+                                Índice de presión hídrica
+                            </span>
+
+                            <strong
+                                class="kpi-value"
+                                id="kpiWater"
+                            >
+                                72
+                            </strong>
+
+                            <div class="kpi-progress">
+                                <span style="width:72%"></span>
+                            </div>
+
+                        </article>
+
+
+                        <article class="kpi-card">
+
+                            <div class="kpi-top">
+
+                                <div class="kpi-icon">
+                                    <i class="fa-solid fa-recycle"></i>
+                                </div>
+
+                                <span class="kpi-trend negative">
+                                    <i class="fa-solid fa-arrow-up"></i>
+                                    4.7%
+                                </span>
+
+                            </div>
+
+                            <span class="kpi-label">
+                                Generación de residuos
+                            </span>
+
+                            <strong
+                                class="kpi-value"
+                                id="kpiWaste"
+                            >
+                                64
+                            </strong>
+
+                            <div class="kpi-progress">
+                                <span style="width:64%"></span>
+                            </div>
+
+                        </article>
+
+
+                        <article class="kpi-card">
+
+                            <div class="kpi-top">
+
+                                <div class="kpi-icon">
+                                    <i class="fa-solid fa-tree"></i>
+                                </div>
+
+                                <span class="kpi-trend positive">
+                                    <i class="fa-solid fa-arrow-down"></i>
+                                    2.1%
+                                </span>
+
+                            </div>
+
+                            <span class="kpi-label">
+                                Presión sobre cobertura forestal
+                            </span>
+
+                            <strong
+                                class="kpi-value"
+                                id="kpiForest"
+                            >
+                                48
+                            </strong>
+
+                            <div class="kpi-progress">
+                                <span style="width:48%"></span>
+                            </div>
+
+                        </article>
+
+
+                        <article class="kpi-card">
+
+                            <div class="kpi-top">
+
+                                <div class="kpi-icon">
+                                    <i class="fa-solid fa-wind"></i>
+                                </div>
+
+                                <span class="kpi-trend neutral">
+                                    <i class="fa-solid fa-minus"></i>
+                                    0.8%
+                                </span>
+
+                            </div>
+
+                            <span class="kpi-label">
+                                Presión sobre calidad del aire
+                            </span>
+
+                            <strong
+                                class="kpi-value"
+                                id="kpiAir"
+                            >
+                                57
+                            </strong>
+
+                            <div class="kpi-progress">
+                                <span style="width:57%"></span>
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    <!-- CHART GRID -->
+
+                    <div class="dashboard-grid">
+
+                        <article class="chart-card chart-large">
+
+                            <div class="chart-header">
+
+                                <div>
+                                    <span class="chart-kicker">
+                                        TENDENCIA
+                                    </span>
+
+                                    <h3>
+                                        Indicadores ambientales
+                                    </h3>
+                                </div>
+
+                                <div class="chart-legend">
+                                    <span>
+                                        <i></i>
+                                        Presión ambiental
+                                    </span>
+                                </div>
+
+                            </div>
+
+                            <div class="chart-container">
+                                <canvas id="environmentChart"></canvas>
+                            </div>
+
+                        </article>
+
+
+                        <article class="chart-card">
+
+                            <div class="chart-header">
+
+                                <div>
+                                    <span class="chart-kicker">
+                                        DISTRIBUCIÓN
+                                    </span>
+
+                                    <h3>
+                                        Tipos de contaminación
+                                    </h3>
+                                </div>
+
+                            </div>
+
+                            <div class="chart-container doughnut-container">
+                                <canvas id="pollutionChart"></canvas>
+                            </div>
+
+                        </article>
+
+
+                        <article class="chart-card">
+
+                            <div class="chart-header">
+
+                                <div>
+                                    <span class="chart-kicker">
+                                        COMPARACIÓN
+                                    </span>
+
+                                    <h3>
+                                        Áreas de impacto
+                                    </h3>
+                                </div>
+
+                            </div>
+
+                            <div class="chart-container">
+                                <canvas id="impactChart"></canvas>
+                            </div>
+
+                        </article>
+
+
+                        <article class="dashboard-insight">
+
+                            <div class="insight-icon">
+                                <i class="fa-solid fa-brain"></i>
+                            </div>
+
+                            <div>
+
+                                <span>
+                                    LECTURA DEL DASHBOARD
+                                </span>
+
+                                <h3>
+                                    Los datos necesitan contexto.
+                                </h3>
+
+                                <p>
+                                    Un indicador por sí solo no explica toda una
+                                    problemática. Para interpretar correctamente
+                                    una tendencia es necesario revisar su fuente,
+                                    período, metodología y población analizada.
+                                </p>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     INVESTIGACIONES
+                ================================================== -->
+
+                <section
+                    class="page-section"
+                    id="investigaciones"
+                    data-title="Investigaciones"
+                >
+
+                    <div class="page-header">
+
+                        <div>
+
+                            <span class="section-kicker">
+                                04 · ANÁLISIS
+                            </span>
+
+                            <h1>
+                                Investigaciones
+                            </h1>
+
+                            <p>
+                                Analizamos factores ambientales y sociales que
+                                pueden contribuir a la contaminación y sus
+                                principales consecuencias.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="research-layout">
+
+
+                        <div class="research-column">
+
+                            <div class="research-column-title">
+                                <span class="research-marker causes"></span>
+
+                                <div>
+                                    <span>ORIGEN</span>
+                                    <h2>Causas principales</h2>
+                                </div>
+                            </div>
+
+
+                            <article class="research-card">
+
+                                <div class="research-card-number">
+                                    01
+                                </div>
+
+                                <div>
+
+                                    <h3>
+                                        Urbanización
+                                    </h3>
+
+                                    <p>
+                                        El crecimiento urbano aumenta la demanda
+                                        de infraestructura, transporte, agua y
+                                        servicios de manejo de residuos.
+                                    </p>
+
+                                    <button class="read-more">
+                                        <span>Analizar</span>
+                                        <i class="fa-solid fa-arrow-right"></i>
+                                    </button>
+
+                                </div>
+
+                            </article>
+
+
+                            <article class="research-card">
+
+                                <div class="research-card-number">
+                                    02
+                                </div>
+
+                                <div>
+
+                                    <h3>
+                                        Tratamiento de aguas
+                                    </h3>
+
+                                    <p>
+                                        La ausencia o insuficiencia de sistemas
+                                        de tratamiento puede incrementar la
+                                        presión sobre cuerpos receptores.
+                                    </p>
+
+                                    <button class="read-more">
+                                        <span>Analizar</span>
+                                        <i class="fa-solid fa-arrow-right"></i>
+                                    </button>
+
+                                </div>
+
+                            </article>
+
+
+                            <article class="research-card">
+
+                                <div class="research-card-number">
+                                    03
+                                </div>
+
+                                <div>
+
+                                    <h3>
+                                        Actividad industrial
+                                    </h3>
+
+                                    <p>
+                                        Algunas actividades productivas requieren
+                                        controles adecuados para minimizar sus
+                                        impactos sobre agua, aire y suelo.
+                                    </p>
+
+                                    <button class="read-more">
+                                        <span>Analizar</span>
+                                        <i class="fa-solid fa-arrow-right"></i>
+                                    </button>
+
+                                </div>
+
+                            </article>
+
+
+                            <article class="research-card">
+
+                                <div class="research-card-number">
+                                    04
+                                </div>
+
+                                <div>
+
+                                    <h3>
+                                        Manejo de residuos
+                                    </h3>
+
+                                    <p>
+                                        La generación, separación, recolección
+                                        y disposición de residuos forman parte
+                                        de un mismo sistema.
+                                    </p>
+
+                                    <button class="read-more">
+                                        <span>Analizar</span>
+                                        <i class="fa-solid fa-arrow-right"></i>
+                                    </button>
+
+                                </div>
+
+                            </article>
+
+                        </div>
+
+
+                        <div class="research-column consequences-column">
+
+                            <div class="research-column-title">
+                                <span class="research-marker consequences"></span>
+
+                                <div>
+                                    <span>EFECTOS</span>
+                                    <h2>Consecuencias</h2>
+                                </div>
+                            </div>
+
+
+                            <article class="research-card">
+
+                                <div class="research-card-number">
+                                    01
+                                </div>
+
+                                <div>
+
+                                    <h3>
+                                        Salud pública
+                                    </h3>
+
+                                    <p>
+                                        Determinados contaminantes ambientales
+                                        pueden relacionarse con riesgos para
+                                        la salud dependiendo de la exposición.
+                                    </p>
+
+                                    <button class="read-more">
+                                        <span>Analizar</span>
+                                        <i class="fa-solid fa-arrow-right"></i>
+                                    </button>
+
+                                </div>
+
+                            </article>
+
+
+                            <article class="research-card">
+
+                                <div class="research-card-number">
+                                    02
+                                </div>
+
+                                <div>
+
+                                    <h3>
+                                        Enfermedades transmitidas por vectores
+                                    </h3>
+
+                                    <p>
+                                        La acumulación de agua y residuos puede
+                                        favorecer condiciones para determinados
+                                        vectores, dependiendo del entorno.
+                                    </p>
+
+                                    <button class="read-more">
+                                        <span>Analizar</span>
+                                        <i class="fa-solid fa-arrow-right"></i>
+                                    </button>
+
+                                </div>
+
+                            </article>
+
+
+                            <article class="research-card">
+
+                                <div class="research-card-number">
+                                    03
+                                </div>
+
+                                <div>
+
+                                    <h3>
+                                        Biodiversidad
+                                    </h3>
+
+                                    <p>
+                                        La transformación y contaminación de
+                                        ecosistemas puede alterar hábitats y
+                                        afectar especies.
+                                    </p>
+
+                                    <button class="read-more">
+                                        <span>Analizar</span>
+                                        <i class="fa-solid fa-arrow-right"></i>
+                                    </button>
+
+                                </div>
+
+                            </article>
+
+
+                            <article class="research-card">
+
+                                <div class="research-card-number">
+                                    04
+                                </div>
+
+                                <div>
+
+                                    <h3>
+                                        Impacto social y económico
+                                    </h3>
+
+                                    <p>
+                                        Los problemas ambientales pueden generar
+                                        costos para comunidades, instituciones
+                                        y actividades productivas.
+                                    </p>
+
+                                    <button class="read-more">
+                                        <span>Analizar</span>
+                                        <i class="fa-solid fa-arrow-right"></i>
+                                    </button>
+
+                                </div>
+
+                            </article>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     RESULTADOS
+                ================================================== -->
+
+                <section
+                    class="page-section"
+                    id="resultados"
+                    data-title="Resultados"
+                >
+
+                    <div class="page-header">
+
+                        <div>
+
+                            <span class="section-kicker">
+                                05 · HALLAZGOS
+                            </span>
+
+                            <h1>
+                                Resultados
+                            </h1>
+
+                            <p>
+                                Una representación visual de los principales
+                                hallazgos que puede incorporar el proyecto.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="results-highlight">
+
+                        <div class="result-big-number">
+                            04
+                        </div>
+
+                        <div>
+
+                            <span>
+                                ÁREAS DE ANÁLISIS
+                            </span>
+
+                            <h2>
+                                Agua · Aire · Suelo · Residuos
+                            </h2>
+
+                            <p>
+                                El estudio conecta estas áreas con dimensiones
+                                ambientales, sociales y económicas.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="comparison-grid">
+
+                        <article class="comparison-card">
+
+                            <div class="comparison-image before-image">
+                                <span>ANTES</span>
+
+                                <div class="comparison-symbol">
+                                    <i class="fa-solid fa-trash"></i>
+                                </div>
+                            </div>
+
+                            <div class="comparison-content">
+
+                                <h3>
+                                    Manejo tradicional
+                                </h3>
+
+                                <p>
+                                    Predominio de hábitos de consumo y disposición
+                                    que pueden incrementar la generación de residuos.
+                                </p>
+
+                                <div class="metric">
+                                    <span>Presión ambiental</span>
+                                    <strong>ALTA</strong>
+                                </div>
+
+                            </div>
+
+                        </article>
+
+
+                        <div class="comparison-arrow">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+
+
+                        <article class="comparison-card">
+
+                            <div class="comparison-image after-image">
+                                <span>DESPUÉS</span>
+
+                                <div class="comparison-symbol">
+                                    <i class="fa-solid fa-seedling"></i>
+                                </div>
+                            </div>
+
+                            <div class="comparison-content">
+
+                                <h3>
+                                    Gestión sostenible
+                                </h3>
+
+                                <p>
+                                    Separación, reducción, reutilización y
+                                    participación comunitaria como alternativas.
+                                </p>
+
+                                <div class="metric">
+                                    <span>Presión ambiental</span>
+                                    <strong>MENOR</strong>
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    <div class="findings-grid">
+
+                        <article class="finding-card">
+
+                            <span>01</span>
+
+                            <i class="fa-solid fa-water"></i>
+
+                            <h3>
+                                Protección del agua
+                            </h3>
+
+                            <p>
+                                Reducir fuentes de contaminación contribuye a
+                                conservar ecosistemas acuáticos.
+                            </p>
+
+                        </article>
+
+
+                        <article class="finding-card">
+
+                            <span>02</span>
+
+                            <i class="fa-solid fa-recycle"></i>
+
+                            <h3>
+                                Gestión de residuos
+                            </h3>
+
+                            <p>
+                                La prevención y separación son componentes
+                                importantes de una gestión integral.
+                            </p>
+
+                        </article>
+
+
+                        <article class="finding-card">
+
+                            <span>03</span>
+
+                            <i class="fa-solid fa-people-group"></i>
+
+                            <h3>
+                                Participación juvenil
+                            </h3>
+
+                            <p>
+                                La educación puede fortalecer la participación
+                                informada de las nuevas generaciones.
+                            </p>
+
+                        </article>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     PROPUESTAS
+                ================================================== -->
+
+                <section
+                    class="page-section"
+                    id="propuestas"
+                    data-title="Propuestas de cambio"
+                >
+
+                    <div class="page-header">
+
+                        <div>
+
+                            <span class="section-kicker">
+                                06 · ACCIÓN
+                            </span>
+
+                            <h1>
+                                Propuestas de cambio
+                            </h1>
+
+                            <p>
+                                La sostenibilidad también comienza con acciones
+                                cotidianas. Elige un reto y empieza.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="challenge-card">
+
+                        <div class="challenge-content">
+
+                            <span class="challenge-tag">
+                                RETO JUVENIL
+                            </span>
+
+                            <h2>
+                                7 días con menos plástico
+                            </h2>
+
+                            <p>
+                                Intenta reducir durante una semana el uso de
+                                productos plásticos desechables.
+                            </p>
+
+
+                            <div class="challenge-progress">
+
+                                <div class="progress-label">
+                                    <span>Progreso</span>
+                                    <strong id="challengePercent">0%</strong>
+                                </div>
+
+                                <div class="progress-track">
+                                    <span id="challengeProgress"></span>
+                                </div>
+
+                            </div>
+
+
+                            <button
+                                class="btn btn-primary"
+                                id="challengeButton"
+                            >
+                                <i class="fa-solid fa-play"></i>
+                                Comenzar reto
+                            </button>
+
+                        </div>
+
+
+                        <div class="challenge-visual">
+
+                            <div class="challenge-circle">
+                                <i class="fa-solid fa-recycle"></i>
+                            </div>
+
+                            <div class="challenge-orbit"></div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="habits-section">
+
+                        <div class="section-heading">
+
+                            <div>
+                                <span class="section-kicker">
+                                    HÁBITOS
+                                </span>
+
+                                <h2>
+                                    Pequeñas acciones
+                                </h2>
+                            </div>
+
+                        </div>
+
+
+                        <div class="habits-grid">
+
+                            <article class="habit-card">
+
+                                <div class="habit-number">01</div>
+
+                                <i class="fa-solid fa-bottle-water"></i>
+
+                                <h3>
+                                    Reutiliza
+                                </h3>
+
+                                <p>
+                                    Lleva recipientes reutilizables cuando sea
+                                    posible.
+                                </p>
+
+                            </article>
+
+
+                            <article class="habit-card">
+
+                                <div class="habit-number">02</div>
+
+                                <i class="fa-solid fa-faucet-drip"></i>
+
+                                <h3>
+                                    Cuida el agua
+                                </h3>
+
+                                <p>
+                                    Evita desperdicios y reporta fugas cuando
+                                    sea posible.
+                                </p>
+
+                            </article>
+
+
+                            <article class="habit-card">
+
+                                <div class="habit-number">03</div>
+
+                                <i class="fa-solid fa-trash-can-arrow-up"></i>
+
+                                <h3>
+                                    Separa
+                                </h3>
+
+                                <p>
+                                    Separa correctamente los residuos según
+                                    los sistemas disponibles.
+                                </p>
+
+                            </article>
+
+
+                            <article class="habit-card">
+
+                                <div class="habit-number">04</div>
+
+                                <i class="fa-solid fa-bicycle"></i>
+
+                                <h3>
+                                    Muévete mejor
+                                </h3>
+
+                                <p>
+                                    Cuando sea seguro y viable, considera
+                                    caminar, bicicleta o transporte colectivo.
+                                </p>
+
+                            </article>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="policy-section">
+
+                        <div class="section-heading">
+
+                            <div>
+                                <span class="section-kicker">
+                                    ÁMBITO PÚBLICO
+                                </span>
+
+                                <h2>
+                                    Líneas de propuesta
+                                </h2>
+                            </div>
+
+                            <p>
+                                Propuestas orientativas para analizar dentro
+                                del proyecto académico.
+                            </p>
+
+                        </div>
+
+
+                        <div class="policy-grid">
+
+                            <article class="policy-card">
+
+                                <i class="fa-solid fa-droplet"></i>
+
+                                <h3>
+                                    Protección hídrica
+                                </h3>
+
+                                <p>
+                                    Fortalecer monitoreo, tratamiento y educación
+                                    sobre el cuidado de fuentes de agua.
+                                </p>
+
+                            </article>
+
+
+                            <article class="policy-card">
+
+                                <i class="fa-solid fa-recycle"></i>
+
+                                <h3>
+                                    Economía circular
+                                </h3>
+
+                                <p>
+                                    Impulsar reducción, reutilización, reciclaje
+                                    y responsabilidad compartida.
+                                </p>
+
+                            </article>
+
+
+                            <article class="policy-card">
+
+                                <i class="fa-solid fa-tree"></i>
+
+                                <h3>
+                                    Restauración ecológica
+                                </h3>
+
+                                <p>
+                                    Promover conservación, restauración y
+                                    educación ambiental.
+                                </p>
+
+                            </article>
+
+
+                            <article class="policy-card">
+
+                                <i class="fa-solid fa-graduation-cap"></i>
+
+                                <h3>
+                                    Educación ambiental
+                                </h3>
+
+                                <p>
+                                    Integrar herramientas educativas que
+                                    acerquen la sostenibilidad a los jóvenes.
+                                </p>
+
+                            </article>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     DELIMITACIONES
+                ================================================== -->
+
+                <section
+                    class="page-section"
+                    id="delimitaciones"
+                    data-title="Delimitaciones"
+                >
+
+                    <div class="page-header">
+
+                        <div>
+
+                            <span class="section-kicker">
+                                07 · METODOLOGÍA
+                            </span>
+
+                            <h1>
+                                Delimitaciones
+                            </h1>
+
+                            <p>
+                                Definición del alcance geográfico, temporal y
+                                temático del proyecto.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="scope-grid">
+
+                        <article class="scope-card">
+
+                            <div class="scope-icon">
+                                <i class="fa-solid fa-map-location-dot"></i>
+                            </div>
+
+                            <span>01</span>
+
+                            <h2>
+                                Geográfica
+                            </h2>
+
+                            <p>
+                                El estudio se centra en El Salvador, considerando
+                                especialmente zonas urbanas y áreas ambientales
+                                relevantes para el análisis de contaminación.
+                            </p>
+
+                            <div class="scope-tags">
+
+                                <span>El Salvador</span>
+                                <span>Zonas urbanas</span>
+                                <span>Cuencas</span>
+
+                            </div>
+
+                        </article>
+
+
+                        <article class="scope-card">
+
+                            <div class="scope-icon">
+                                <i class="fa-solid fa-calendar-days"></i>
+                            </div>
+
+                            <span>02</span>
+
+                            <h2>
+                                Temporal
+                            </h2>
+
+                            <p>
+                                El análisis se estructura alrededor del período
+                                establecido para la investigación académica,
+                                incorporando fuentes correspondientes al
+                                período seleccionado.
+                            </p>
+
+                            <div class="scope-tags">
+
+                                <span>2024</span>
+                                <span>Contexto actual</span>
+                                <span>Comparativas</span>
+
+                            </div>
+
+                        </article>
+
+
+                        <article class="scope-card">
+
+                            <div class="scope-icon">
+                                <i class="fa-solid fa-layer-group"></i>
+                            </div>
+
+                            <span>03</span>
+
+                            <h2>
+                                Temática
+                            </h2>
+
+                            <p>
+                                Se estudian causas y consecuencias de la
+                                contaminación ambiental y su relación con
+                                diferentes dimensiones sociales.
+                            </p>
+
+                            <div class="scope-tags">
+
+                                <span>Agua</span>
+                                <span>Aire</span>
+                                <span>Suelo</span>
+                                <span>Residuos</span>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    <div class="timeline">
+
+                        <div class="timeline-line"></div>
+
+                        <div class="timeline-item active">
+
+                            <span>01</span>
+
+                            <div>
+                                <strong>Identificación</strong>
+                                <p>
+                                    Reconocimiento del problema ambiental.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="timeline-item">
+
+                            <span>02</span>
+
+                            <div>
+                                <strong>Investigación</strong>
+                                <p>
+                                    Revisión de causas, consecuencias y fuentes.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="timeline-item">
+
+                            <span>03</span>
+
+                            <div>
+                                <strong>Análisis</strong>
+                                <p>
+                                    Organización e interpretación de información.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="timeline-item">
+
+                            <span>04</span>
+
+                            <div>
+                                <strong>Propuesta</strong>
+                                <p>
+                                    Formulación de acciones y alternativas.
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     REFERENCIAS
+                ================================================== -->
+
+                <section
+                    class="page-section"
+                    id="referencias"
+                    data-title="Referencias"
+                >
+
+                    <div class="page-header">
+
+                        <div>
+
+                            <span class="section-kicker">
+                                08 · FUENTES
+                            </span>
+
+                            <h1>
+                                Referencias
+                            </h1>
+
+                            <p>
+                                Fuentes para documentar y respaldar el contenido
+                                del proyecto siguiendo el formato APA 7.ª edición.
+                            </p>
+
+                        </div>
+
+
+                        <div class="apa-badge">
+                            APA<br>
+                            <strong>7</strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="reference-list">
+
+                        <article class="reference-item">
+
+                            <div class="reference-type">
+                                INSTITUCIONAL
+                            </div>
+
+                            <div class="reference-content">
+
+                                <h3>
+                                    // Ministerio de Medio Ambiente y Recursos Naturales
+                                </h3>
+
+                                <p>
+                                    // Agregar aquí la referencia oficial
+                                    correspondiente en formato APA 7.ª edición.
+                                </p>
+
+                                <span>
+                                    // URL / DOI
+                                </span>
+
+                            </div>
+
+                            <button class="reference-action">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </button>
+
+                        </article>
+
+
+                        <article class="reference-item">
+
+                            <div class="reference-type">
+                                INTERNACIONAL
+                            </div>
+
+                            <div class="reference-content">
+
+                                <h3>
+                                    // Organización Mundial de la Salud
+                                </h3>
+
+                                <p>
+                                    // Agregar aquí el informe o publicación
+                                    consultada en formato APA 7.ª edición.
+                                </p>
+
+                                <span>
+                                    // URL / DOI
+                                </span>
+
+                            </div>
+
+                            <button class="reference-action">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </button>
+
+                        </article>
+
+
+                        <article class="reference-item">
+
+                            <div class="reference-type">
+                                ACADÉMICA
+                            </div>
+
+                            <div class="reference-content">
+
+                                <h3>
+                                    // Artículo científico
+                                </h3>
+
+                                <p>
+                                    // Incorporar autores, año, título,
+                                    revista, volumen y páginas.
+                                </p>
+
+                                <span>
+                                    // DOI
+                                </span>
+
+                            </div>
+
+                            <button class="reference-action">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </button>
+
+                        </article>
+
+
+                        <article class="reference-item">
+
+                            <div class="reference-type">
+                                ONG
+                            </div>
+
+                            <div class="reference-content">
+
+                                <h3>
+                                    // Organización ambiental
+                                </h3>
+
+                                <p>
+                                    // Agregar reporte ambiental consultado.
+                                </p>
+
+                                <span>
+                                    // URL
+                                </span>
+
+                            </div>
+
+                            <button class="reference-action">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </button>
+
+                        </article>
+
+                    </div>
+
+
+                    <div class="references-note">
+
+                        <i class="fa-solid fa-circle-info"></i>
+
+                        <div>
+
+                            <strong>
+                                Importante para la versión académica
+                            </strong>
+
+                            <p>
+                                Sustituye los campos marcados con <b>//</b>
+                                por las referencias exactas utilizadas en tu
+                                investigación. Esto permite mantener la
+                                trazabilidad de cada dato.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </main>
+
+
+            <!-- =============================================
+                 FOOTER
+            ============================================== -->
+
+            <footer class="footer">
+
+                <div class="footer-brand">
+
+                    <div class="footer-logo">
+                        <i class="fa-solid fa-leaf"></i>
+                    </div>
+
+                    <div>
+                        <strong>EcoSV</strong>
+
+                        <span>
+                            Medio Ambiente y Sostenibilidad
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <div class="footer-center">
+                    Proyecto educativo · El Salvador · 2024
+                </div>
+
+
+                <div class="footer-social">
+
+                    <a href="#" aria-label="Instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+
+                    <a href="#" aria-label="Facebook">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+
+                    <a href="#" aria-label="TikTok">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </a>
+
+                </div>
+
+            </footer>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         MODAL
+    ====================================================== -->
+
+    <div
+        class="modal"
+        id="researchModal"
+        aria-hidden="true"
+    >
+
+        <div class="modal-overlay" id="modalOverlay"></div>
+
+        <div class="modal-box">
+
+            <button
+                class="modal-close"
+                id="modalClose"
+                aria-label="Cerrar"
+            >
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <span class="section-kicker">
+                INVESTIGACIÓN
+            </span>
+
+            <h2 id="modalTitle">
+                Investigación
+            </h2>
+
+            <p id="modalDescription">
+                Información.
+            </p>
+
+            <div class="modal-footer">
+
+                <span>
+                    <i class="fa-solid fa-book-open"></i>
+                    Módulo educativo
+                </span>
+
+                <button
+                    class="btn btn-primary modal-close-action"
+                >
+                    Entendido
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- SCRIPT -->
+    <script src="script.js"></script>
+
+</body>
+</html>
